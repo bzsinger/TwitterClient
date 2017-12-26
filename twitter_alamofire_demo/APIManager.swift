@@ -38,7 +38,9 @@ class APIManager: SessionManager {
                     failure(error)
                 } else if let user = user {
                     
-                    // MARK: TODO: set User.current, so that it's persisted
+                    print("here")
+                    
+                    User.current = user
                     
                     success()
                 }
@@ -53,7 +55,7 @@ class APIManager: SessionManager {
 
         User.current = nil
         
-        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("UserDidLogout"), object: nil)
     }
 
     func getCurrentAccount(completion: @escaping (User?, Error?) -> ()) {
@@ -164,7 +166,18 @@ class APIManager: SessionManager {
         }
     }
     
-    // MARK: TODO: Compose Tweet
+    // MARK: Compose Tweet
+    func composeTweet(with text: String, completion: @escaping (Tweet?, Error?) -> ()) {
+        let urlString = "https://api.twitter.com/1.1/statuses/update.json"
+        let parameters = ["status": text]
+        oauthManager.client.post(urlString, parameters: parameters, headers: nil, body: nil, success: { (response: OAuthSwiftResponse) in
+            let tweetDictionary = try! response.jsonObject() as! [String: Any]
+            let tweet = Tweet(dictionary: tweetDictionary)
+            completion(tweet, nil)
+        }) { (error: OAuthSwiftError) in
+            completion(nil, error.underlyingError)
+        }
+    }
     
     // MARK: TODO: Get User Timeline
     

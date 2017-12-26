@@ -202,9 +202,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
-                        <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="hz2-ji-ft0">
                             <connections>
                                 <action selector="didTapLogout:" destination="5YO-Vh-39k" id="fM7-h5-mq1"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="edit-icon" id="efE-2b-0EP">
+                            <connections>
+                                <segue destination="jMx-er-sJ8" kind="presentation" id="4W7-SL-rgl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -216,10 +221,81 @@
             </objects>
             <point key="canvasLocation" x="1660" y="36.431784107946029"/>
         </scene>
+        <!--Compose View Controller-->
+        <scene sceneID="47F-sd-UHu">
+            <objects>
+                <viewController id="jMx-er-sJ8" customClass="ComposeViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TF6-aY-GDS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pip-wL-NoD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Wup-hr-1Lx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cjh-YU-ksQ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <items>
+                                    <navigationItem id="YEu-pi-TU6">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="Sl8-qh-dVs">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="70D-nY-IwA">
+                                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Cancel"/>
+                                                <connections>
+                                                    <action selector="cancelButtonPressed:" destination="jMx-er-sJ8" eventType="touchUpInside" id="r71-bc-ccz"/>
+                                                </connections>
+                                            </button>
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="jMx-er-sJ8" id="yNg-Cf-PaC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="q31-l2-hSP">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pxb-VL-6OU">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Tweet"/>
+                                                <connections>
+                                                    <action selector="tweetButtonPressed:" destination="jMx-er-sJ8" eventType="touchUpInside" id="br9-zO-YaV"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AGn-hR-W2W">
+                                <rect key="frame" x="0.0" y="72" width="375" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="dJ8-pb-lLZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="AGn-hR-W2W" secondAttribute="trailing" id="1c2-a2-xfu"/>
+                            <constraint firstItem="AGn-hR-W2W" firstAttribute="top" secondItem="Cjh-YU-ksQ" secondAttribute="bottom" id="Fy9-ig-YIb"/>
+                            <constraint firstItem="AGn-hR-W2W" firstAttribute="top" secondItem="Cjh-YU-ksQ" secondAttribute="bottom" id="JZJ-wp-etu"/>
+                            <constraint firstAttribute="trailing" secondItem="Cjh-YU-ksQ" secondAttribute="trailing" id="Sin-Wj-qvu"/>
+                            <constraint firstItem="Cjh-YU-ksQ" firstAttribute="leading" secondItem="Wup-hr-1Lx" secondAttribute="leading" id="icW-vL-htG"/>
+                            <constraint firstItem="Cjh-YU-ksQ" firstAttribute="top" secondItem="TF6-aY-GDS" secondAttribute="bottom" constant="8" id="ixC-Fi-YxC"/>
+                            <constraint firstItem="AGn-hR-W2W" firstAttribute="leading" secondItem="Wup-hr-1Lx" secondAttribute="leading" id="mXx-6r-Fky"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tweetText" destination="AGn-hR-W2W" id="WWo-gS-enZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gcx-z2-hQ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2437.5999999999999" y="-317.09145427286359"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WXZ-z8-8LI">
             <objects>
-                <navigationController storyboardIdentifier="TweetsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="RFK-Vv-pWW" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="UserNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="RFK-Vv-pWW" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="COb-xK-t9O">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -237,5 +313,6 @@
     </scenes>
     <resources>
         <image name="TwitterLogoBlue" width="200" height="200"/>
+        <image name="edit-icon" width="30" height="27"/>
     </resources>
 </document>

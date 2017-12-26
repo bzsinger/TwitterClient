@@ -16,13 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-        // MARK: TODO: Check for logged in user
-        
-        NotificationCenter.default.addObserver(forName: Notification.Name("didLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
-            print("Logout notification received")
+        if User.current != nil {
+            //print("There is a current user")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
-            self.window?.rootViewController = loginVC
+            let vc = storyboard.instantiateViewController(withIdentifier: "UserNavigationController")
+            window?.rootViewController = vc
+        } else {
+            NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "UserDidLogout"), object: nil, queue: OperationQueue.main) { (Notification) in
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let vc = storyboard.instantiateInitialViewController()
+                self.window?.rootViewController = vc
+            }
         }
         
         return true
