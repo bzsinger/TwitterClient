@@ -2,7 +2,7 @@
 
 TwitterClient is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: 7 hours spent in total
+Time spent: 9 hours spent in total
 
 ## User Stories
 
@@ -15,9 +15,9 @@ The following **required** functionality is completed:
 - [X] In the home timeline, user can view tweet with the user profile picture, username, tweet text, and timestamp.
 - [X] User can pull to refresh.
 - [X] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet.
-- [ ] User can compose a new tweet by tapping on a compose button.
+- [X] User can compose a new tweet by tapping on a compose button.
 - [X] Using AutoLayout, the Tweet cell should adjust its layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation.
-- [ ] The current signed in user will be persisted across restarts
+- [X] The current signed in user will be persisted across restarts
 
 The following **optional** features are implemented:
 
@@ -44,13 +44,13 @@ The following **optional** features are implemented:
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
 1. Add CBZSplashView to project
-2.
+2. Improve use of API
 
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://i.imgur.com/48lA7lF.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
