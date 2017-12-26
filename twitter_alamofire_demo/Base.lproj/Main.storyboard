@@ -121,10 +121,16 @@
                                                         <constraint firstAttribute="height" constant="30" id="dgJ-al-k3s"/>
                                                     </constraints>
                                                     <state key="normal" title="RT"/>
+                                                    <connections>
+                                                        <action selector="didTapRetweet:" destination="U1g-kw-izy" eventType="touchUpInside" id="Flk-KW-AIY"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Urb-6L-rV3">
                                                     <rect key="frame" x="217" y="66" width="30" height="30"/>
                                                     <state key="normal" title="F"/>
+                                                    <connections>
+                                                        <action selector="didTapFavorite:" destination="U1g-kw-izy" eventType="touchUpInside" id="cqB-mh-jIj"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9V-Zi-SLb">
                                                     <rect key="frame" x="169" y="72.5" width="9.5" height="18"/>

@@ -26,7 +26,6 @@ class TweetCell: UITableViewCell {
     var retweeted = false
     var favorited = false
     
-    //h/t Victoria
     var tweet: Tweet! {
         didSet {
             let tweetOwner = tweet.user
@@ -58,11 +57,10 @@ class TweetCell: UITableViewCell {
             
 
             timeLabel.text = tweet.createdAtString
-            
 
             tweetLabel.text = tweet.text
             
-            favoriteNumberLabel.text = formatFavoriteRetweetNumbers(number: tweet.favoriteCount!)
+            favoriteNumberLabel.text = formatFavoriteRetweetNumbers(number: tweet.favoriteCount)
             retweetNumberLabel.text = formatFavoriteRetweetNumbers(number: tweet.retweetCount)
             
             replyButton.setBackgroundImage(#imageLiteral(resourceName: "reply-icon"), for: .normal)
@@ -87,6 +85,63 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         // Initialization code
         super.awakeFromNib()
+    }
+    
+    @IBAction func didTapFavorite(_ sender: Any) {
+        if tweet.favorited {
+            APIManager.shared.unfavorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let  error = error {
+                    print("Error unfavoriting tweet: \(error.localizedDescription)")
+                } else if tweet != nil {
+                    self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "favor-icon"), for: .normal)
+                    self.tweet.favoriteCount -= 1
+                    self.favoriteNumberLabel.text = self.formatFavoriteRetweetNumbers(number: self.tweet.favoriteCount)
+                    self.tweet.favorited = false
+                }
+            }
+        } else {
+            APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let  error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if tweet != nil {
+                    self.favoriteButton.setBackgroundImage(#imageLiteral(resourceName: "favor-icon-red"), for: .normal)
+                    self.tweet.favoriteCount += 1
+                    self.favoriteNumberLabel.text = self.formatFavoriteRetweetNumbers(number: self.tweet.favoriteCount)
+                    self.tweet.favorited = true
+                }
+            }
+        }
+    }
+    
+    @IBAction func didTapRetweet(_ sender: Any) {
+        if tweet.retweeted {
+            APIManager.shared.unretweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let  error = error {
+                    print("Error unretweeting tweet: \(error.localizedDescription)")
+                } else if tweet != nil {
+                    self.retweetButton.setBackgroundImage(#imageLiteral(resourceName: "retweet-icon"), for: .normal)
+                    self.tweet.retweetCount -= 1
+                    self.retweetNumberLabel.text = self.formatFavoriteRetweetNumbers(number: self.tweet.retweetCount)
+                    self.tweet.retweeted = false
+                }
+            }
+        } else {
+            APIManager.shared.retweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let  error = error {
+                    print("Error retweeting tweet: \(error.localizedDescription)")
+                } else if tweet != nil {
+                    self.retweetButton.setBackgroundImage(#imageLiteral(resourceName: "retweet-icon-green"), for: .normal)
+                    self.tweet.retweetCount += 1
+                    self.retweetNumberLabel.text = self.formatFavoriteRetweetNumbers(number: self.tweet.retweetCount)
+                    self.tweet.retweeted = true
+                }
+            }
+        }
+        
+    }
+    
+    @IBAction func didTapReply(_ sender: Any) {
+        
     }
     
     func formatFavoriteRetweetNumbers(number: Int) -> String {
