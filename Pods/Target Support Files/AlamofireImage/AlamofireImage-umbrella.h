@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double PrephirencesVersionNumber;
-FOUNDATION_EXPORT const unsigned char PrephirencesVersionString[];
+FOUNDATION_EXPORT double AlamofireImageVersionNumber;
+FOUNDATION_EXPORT const unsigned char AlamofireImageVersionString[];
 

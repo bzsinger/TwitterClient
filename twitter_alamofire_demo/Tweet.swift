@@ -14,7 +14,7 @@ class Tweet {
     var id: Int64 // For favoriting, retweeting & replying
     var text: String // Text content of tweet
     var favoriteCount: Int? // Update favorite count label
-    var favorited: Bool? // Configure favorite button
+    var favorited: Bool // Configure favorite button
     var retweetCount: Int // Update favorite count label
     var retweeted: Bool // Configure retweet button
     var user: User // Contains name, screenname, etc. of tweet author
@@ -25,7 +25,11 @@ class Tweet {
         id = dictionary["id"] as! Int64
         text = dictionary["text"] as! String
         favoriteCount = dictionary["favorite_count"] as? Int
-        favorited = dictionary["favorited"] as? Bool
+        if let isFavorited = dictionary["favorited"] as? Bool {
+            favorited = isFavorited
+        } else {
+            favorited = false
+        }
         retweetCount = dictionary["retweet_count"] as! Int
         retweeted = dictionary["retweeted"] as! Bool
         
@@ -45,6 +49,12 @@ class Tweet {
         createdAtString = formatter.string(from: date)
         
         
+    }
+    
+    static func tweets(with array: [[String: Any]]) -> [Tweet] {
+        return array.flatMap({ (dictionary) -> Tweet in
+            Tweet(dictionary: dictionary)
+        })
     }
 }
 
