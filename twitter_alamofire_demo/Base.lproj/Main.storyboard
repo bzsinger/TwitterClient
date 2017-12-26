@@ -93,9 +93,6 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yb-xh-RFH">
                                                     <rect key="frame" x="61" y="37" width="306" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="306" id="oU3-NM-czo"/>
-                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -169,6 +166,7 @@
                                                 <constraint firstItem="IeX-Fn-3dk" firstAttribute="centerY" secondItem="jEd-5G-7jF" secondAttribute="centerY" id="Zq4-o9-tjF"/>
                                                 <constraint firstItem="ScV-7V-lmw" firstAttribute="leading" secondItem="zd2-Er-659" secondAttribute="leading" constant="8" id="Zwc-yT-RD6"/>
                                                 <constraint firstItem="jEd-5G-7jF" firstAttribute="leading" secondItem="ScV-7V-lmw" secondAttribute="trailing" constant="8" id="eMQ-On-qvp"/>
+                                                <constraint firstItem="8yb-xh-RFH" firstAttribute="trailing" secondItem="zd2-Er-659" secondAttribute="trailingMargin" id="fvo-1p-p9L"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ScV-7V-lmw" secondAttribute="bottom" constant="8" id="k1p-46-pSc"/>
                                                 <constraint firstItem="kep-vq-suC" firstAttribute="top" secondItem="zd2-Er-659" secondAttribute="topMargin" constant="4" id="l8p-i5-8Ec"/>
                                                 <constraint firstItem="8yb-xh-RFH" firstAttribute="top" secondItem="kep-vq-suC" secondAttribute="bottom" constant="4" id="oY3-0m-mue"/>
